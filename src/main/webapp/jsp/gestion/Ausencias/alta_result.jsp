@@ -74,7 +74,12 @@ PERMI.execute();
 String RSTIPO_AUSENCIA__MMColParam2 = "0";
 if (request.getParameter("ID_TIPO_AUSENCIA")  !=null) {RSTIPO_AUSENCIA__MMColParam2 = (String)request.getParameter("ID_TIPO_AUSENCIA") ;}
 %>
-<%
+// --- Inicio Comentario ---
+// Descripción: Obtener la descripción del tipo de ausencia seleccionada para mostrarla en el resultado.
+// Parámetros: RSTIPO_AUSENCIA__MMColParam2 - ID del tipo de ausencia (se obtiene del parámetro ID_TIPO_AUSENCIA).
+// Posible mejora: Añadir índice en ID_TIPO_AUSENCIA (clave primaria, probablemente ya indexada).
+//                 Considerar usar PreparedStatement con parámetros en lugar de concatenación.
+// --- Fin Comentario ---
 Driver DriverRSTIPO_AUSENCIA = (Driver)Class.forName(MM_RRHH_DRIVER).newInstance();
 Connection ConnRSTIPO_AUSENCIA = DriverManager.getConnection(MM_RRHH_STRING,MM_RRHH_USERNAME,MM_RRHH_PASSWORD);
 PreparedStatement StatementRSTIPO_AUSENCIA = ConnRSTIPO_AUSENCIA.prepareStatement("SELECT DESC_TIPO_AUSENCIA  FROM tr_tipo_ausencia  WHERE ID_TIPO_AUSENCIA=" + RSTIPO_AUSENCIA__MMColParam2 + "");
