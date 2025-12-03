@@ -11,7 +11,13 @@
 String RS_TipoAusencia__MMColParam1 = "1";
 if (session.getValue("MM_ID_FUNCIONARIO")         !=null) {RS_TipoAusencia__MMColParam1 = (String)session.getValue("MM_ID_FUNCIONARIO")        ;}
 %>
-<%
+// --- Inicio Comentario ---
+// Descripción: Obtener los tipos de ausencias disponibles para el selector de visualización.
+//              Incluye tipos con código menor a 500 o asociados a horas sindicales del funcionario.
+// Parámetros: RS_TipoAusencia__MMColParam1 - ID del funcionario (se obtiene de la sesión MM_ID_FUNCIONARIO).
+// Posible mejora: Añadir índices en (id_funcionario, id_ano) de hora_sindical.
+//                 Parametrizar el año '2008' para usar año actual o dinámico.
+// --- Fin Comentario ---
 Driver DriverRS_TipoAusencia = (Driver)Class.forName(MM_RRHH_DRIVER).newInstance();
 Connection ConnRS_TipoAusencia = DriverManager.getConnection(MM_RRHH_STRING,MM_RRHH_USERNAME,MM_RRHH_PASSWORD);
 PreparedStatement StatementRS_TipoAusencia = ConnRS_TipoAusencia.prepareStatement("SELECT DISTINCT ID_TIPO_AUSENCIA, ID_TIPO_AUSENCIA || ' -- ' || DESC_TIPO_AUSENCIA as DESC_TIPO_AUSENCIA  FROM TR_TIPO_AUSENCIA where   id_tipo_ausencia <500   or id_tipo_ausencia in(select id_tipo_ausencia  FROM hora_sindical  WHERE id_ano=2008 and id_funcionario='" + RS_TipoAusencia__MMColParam1 + "')  ORDER BY DESC_TIPO_AUSENCIA");
@@ -25,7 +31,13 @@ int RS_TipoAusencia_numRows = 0;
 String RS_DatosAusencia__MMColParam1 = "0";
 if (request.getParameter("ID_AUSENCIA")   !=null) {RS_DatosAusencia__MMColParam1 = (String)request.getParameter("ID_AUSENCIA")  ;}
 %>
-<%
+// --- Inicio Comentario ---
+// Descripción: Obtener todos los datos de una ausencia específica para visualizarla en modo solo lectura.
+//              Incluye fechas, horas, estado, justificación y observaciones completas.
+// Parámetros: RS_DatosAusencia__MMColParam1 - ID de la ausencia (se obtiene del parámetro ID_AUSENCIA).
+// Posible mejora: Añadir índice en ID_AUSENCIA (clave primaria, probablemente ya indexada).
+//                 Usar join explícito (INNER JOIN) en lugar de join implícito en WHERE.
+// --- Fin Comentario ---
 Driver DriverRS_DatosAusencia = (Driver)Class.forName(MM_RRHH_DRIVER).newInstance();
 Connection ConnRS_DatosAusencia = DriverManager.getConnection(MM_RRHH_STRING,MM_RRHH_USERNAME,MM_RRHH_PASSWORD);
 PreparedStatement StatementRS_DatosAusencia = ConnRS_DatosAusencia.prepareStatement("SELECT a.id_EStado, a.id_ausencia,  desc_tipo_ausencia,  id_ano,  id_funcionario,  a.id_tipo_ausencia,  id_estado,  firmado_js,  fecha_js,  firmado_ja,  fecha_ja,  firmado_rrhh,  fecha_rrhh,      to_Char(fecha_inicio,'DD/MM/YYYY') as FECHA_INICIO,    to_Char(fecha_Fin,'DD/MM/YYYY') as FECHA_FIN,    to_Char(fecha_inicio,'HH24') as HORA_INICIO,    to_Char(fecha_inicio,'MI') as MINUTO_INICIO,    to_Char(fecha_fin,'HH24') as HORA_FIN,    to_Char(fecha_fin,'MI') as MINUTO_FIN,        total_horas,  motivo_denega,  observaciones,  a.anulado,  fecha_anulacion,  a.id_usuario,  a.fecha_modi,  a.justificado  FROM AUSENCIA A,        TR_TIPO_AUSENCIA TR  WHERE a.ID_TIPO_AUSENCIA = TR.ID_TIPO_AUSENCIA   AND ID_AUSENCIA = " + RS_DatosAusencia__MMColParam1 + "");
@@ -35,7 +47,12 @@ boolean RS_DatosAusencia_hasData = !RS_DatosAusencia_isEmpty;
 Object RS_DatosAusencia_data;
 int RS_DatosAusencia_numRows = 0;
 %>
-<%
+// --- Inicio Comentario ---
+// Descripción: Obtener el catálogo de estados de permisos/ausencias para mostrar en la visualización.
+//              Lista todos los posibles estados que puede tener una ausencia.
+// Parámetros: Ninguno.
+// Posible mejora: Consulta simple de catálogo. Considerar caché de aplicación para reducir consultas repetidas.
+// --- Fin Comentario ---
 Driver DriverRSESTADO = (Driver)Class.forName(MM_RRHH_DRIVER).newInstance();
 Connection ConnRSESTADO = DriverManager.getConnection(MM_RRHH_STRING,MM_RRHH_USERNAME,MM_RRHH_PASSWORD);
 PreparedStatement StatementRSESTADO = ConnRSESTADO.prepareStatement("SELECT id_estado_permiso,         desc_estado_permiso  FROM tr_estado_permiso");

@@ -11,17 +11,27 @@
 String RS_TipoAusencia__MMColParam1 = "1";
 if (session.getValue("MM_ID_FUNCIONARIO")        !=null) {RS_TipoAusencia__MMColParam1 = (String)session.getValue("MM_ID_FUNCIONARIO")       ;}
 %>
-<%
+// --- Inicio Comentario ---
+// Descripción: Obtener los tipos de ausencias disponibles para el funcionario actual.
+//              Incluye tipos de conciliación con horas disponibles y tipos generales.
+// Parámetros: RS_TipoAusencia__MMColParam1 - ID del funcionario (se obtiene de la sesión MM_ID_FUNCIONARIO).
+// Posible mejora: Utilizar índices en las columnas id_funcionario, id_tipo_ausencia, id_ano.
+//                 Considerar parametrizar el año '2022' para mayor flexibilidad.
+// --- Fin Comentario ---
 Driver DriverRS_TipoAusencia = (Driver)Class.forName(MM_RRHH_DRIVER).newInstance();
 Connection ConnRS_TipoAusencia = DriverManager.getConnection(MM_RRHH_STRING,MM_RRHH_USERNAME,MM_RRHH_PASSWORD);
-PreparedStatement StatementRS_TipoAusencia = ConnRS_TipoAusencia.prepareStatement("select t.id_tipo_ausencia,      ID_TIPO_AUSENCIA || ' -- ' || DESC_TIPO_AUSENCIA || '. Horas Disponibles este a�o: ' ||  trunc((Total -utILIZADAs) / 60, 2) || ' h.' as desc_tipo_ausencia  FROM bolsa_concilia h, tr_tipo_ausencia t WHERE id_funcionario = '" + RS_TipoAusencia__MMColParam1 + "'   and '050' = t.id_tipo_ausencia   and  h.ID_ANO = '2022'   and tr_ANULADO = 'NO' union SELECT DISTINCT ID_TIPO_AUSENCIA,                ID_TIPO_AUSENCIA || ' -- ' || DESC_TIPO_AUSENCIA as DESC_TIPO_AUSENCIA  FROM TR_TIPO_AUSENCIA where id_tipo_ausencia < 500  and id_tipo_ausencia not in (50)    or id_tipo_ausencia in       (select id_tipo_ausencia          FROM hora_sindical         WHERE id_ano = to_char(sysdate, 'YYYY')           and id_funcionario = '" + RS_TipoAusencia__MMColParam1 + "') ORDER BY DESC_TIPO_AUSENCIA ");
+PreparedStatement StatementRS_TipoAusencia = ConnRS_TipoAusencia.prepareStatement("select t.id_tipo_ausencia,      ID_TIPO_AUSENCIA || ' -- ' || DESC_TIPO_AUSENCIA || '. Horas Disponibles este a�o: ' ||  trunc((Total -utILIZADAs) / 60, 2) || ' h.' as desc_tipo_ausencia  FROM bolsa_concilia h, tr_tipo_ausencia t WHERE id_funcionario = '" + RS_TipoAusencia__MMColParam1 + "'   and '050' = t.id_tipo_ausencia   and  h.ID_ANO = '2022'   and tr_ANULADO = 'NO' union SELECT DISTINCT ID_TIPO_AUSENCIA,                ID_TIPO_AUSENCIA || ' -- ' || DESC_TIPO_AUSENCIA as DESC_TIPO_AUSENCIA  FROM TR_TIPO_AUSENCIA where id_tipo_ausencia < 500  and id_tipo_ausencia not in (50)    or id_tipo_ausencia in       (select id_tipo_ausencia          FROM hora_sindical         WHERE id_ano = to_char(sysdate, 'YYYY')           and id_funcionario = '" + RS_TipoAusencia__MMColParam1 + "') ORDER BY DESC_TIPO_AUSENCIA ");
 ResultSet RS_TipoAusencia = StatementRS_TipoAusencia.executeQuery();
 boolean RS_TipoAusencia_isEmpty = !RS_TipoAusencia.next();
 boolean RS_TipoAusencia_hasData = !RS_TipoAusencia_isEmpty;
 Object RS_TipoAusencia_data;
 int RS_TipoAusencia_numRows = 0;
 %>
-<%
+// --- Inicio Comentario ---
+// Descripción: Obtener la fecha actual del sistema en formato dd/MM/YYYY.
+// Parámetros: Ninguno.
+// Posible mejora: Consulta simple sin optimizaciones necesarias. DUAL es óptimo para Oracle.
+// --- Fin Comentario ---
 Driver DriverRS_FECHAHOY = (Driver)Class.forName(MM_RRHH_DRIVER).newInstance();
 Connection ConnRS_FECHAHOY = DriverManager.getConnection(MM_RRHH_STRING,MM_RRHH_USERNAME,MM_RRHH_PASSWORD);
 PreparedStatement StatementRS_FECHAHOY = ConnRS_FECHAHOY.prepareStatement("SELECT TO_CHAR(SYSDATE,'dd/MM/YYYY') AS fecha_hoy FROM DUAL");
@@ -35,7 +45,13 @@ int RS_FECHAHOY_numRows = 0;
 String RSHORAS__MMColParam1 = "101217";
 if (session.getValue("MM_ID_FUNCIONARIO")    !=null) {RSHORAS__MMColParam1 = (String)session.getValue("MM_ID_FUNCIONARIO")   ;}
 %>
-<%
+// --- Inicio Comentario ---
+// Descripción: Obtener el contador de horas extras disponibles para ausencias del funcionario.
+//              Calcula horas y minutos disponibles (total - utilizadas) con formato HH:MM.
+// Parámetros: RSHORAS__MMColParam1 - ID del funcionario (se obtiene de la sesión MM_ID_FUNCIONARIO).
+// Posible mejora: Añadir índice en (id_funcionario, id_ano).
+//                 Considerar parametrizar el año '2003' o usar año actual.
+// --- Fin Comentario ---
 Driver DriverRSHORAS = (Driver)Class.forName(MM_RRHH_DRIVER).newInstance();
 Connection ConnRSHORAS = DriverManager.getConnection(MM_RRHH_STRING,MM_RRHH_USERNAME,MM_RRHH_PASSWORD);
 PreparedStatement StatementRSHORAS = ConnRSHORAS.prepareStatement("SELECT lpad(  ( (total-utilizadas)  -  mod((total-utilizadas),60))/60,2,0)  || ':' || lpad(mod((total-utilizadas),60),2,0) as contador  FROM horas_extras_ausenciaS  WHERE id_funcionario='" + RSHORAS__MMColParam1 + "' and id_ano='2003'");
@@ -49,7 +65,13 @@ int RSHORAS_numRows = 0;
 String RSHORAS_SINDICALES__MMColParam1 = "0";
 if (session.getValue("MM_ID_FUNCIONARIO")       !=null) {RSHORAS_SINDICALES__MMColParam1 = (String)session.getValue("MM_ID_FUNCIONARIO")      ;}
 %>
-<%
+// --- Inicio Comentario ---
+// Descripción: Obtener las horas sindicales disponibles por mes y tipo para el funcionario actual.
+//              Muestra el nombre del mes, tipo de ausencia, horas totales, utilizadas y disponibles.
+// Parámetros: RSHORAS_SINDICALES__MMColParam1 - ID del funcionario (se obtiene de la sesión MM_ID_FUNCIONARIO).
+// Posible mejora: Añadir índices en (id_funcionario, id_ano) y (id_tipo_ausencia).
+//                 Considerar usar una tabla de referencia para nombres de meses en lugar de DECODE.
+// --- Fin Comentario ---
 Driver DriverRSHORAS_SINDICALES = (Driver)Class.forName(MM_RRHH_DRIVER).newInstance();
 Connection ConnRSHORAS_SINDICALES = DriverManager.getConnection(MM_RRHH_STRING,MM_RRHH_USERNAME,MM_RRHH_PASSWORD);
 PreparedStatement StatementRSHORAS_SINDICALES = ConnRSHORAS_SINDICALES.prepareStatement("SELECT ID_MES,       DECODE(ID_MES,              1,              '01--Enero',              2,              '02--Febrero',              3,              '03--Marzo',              4,              '04--Abril',              5,              '05--Mayo',              6,              '06--Junio',              7,              '07--Julio',              8,              '08--Agosto',              9,              '09--Septiembre',              10,              '10--Octubre',              11,              '11--Noviembre',              12,              '12--Diciembre',              '') || '--tipo: ' || h.id_tipo_ausencia || ' --Total :' ||       TRUNC(Total_horas / 60, 0) || '--Utilizadas :' ||       TRUNC(TOTAL_Utilizadas / 60, 0) as Registro,       lpad(ID_MES, 2, 0) || '-' ||       lpad(total_HORAS - TOTAL_utilizadas, 4, 0) as Total  FROM hora_sindical h,tr_tipo_ausencia tr WHERE id_funcionario = '" + RSHORAS_SINDICALES__MMColParam1 + "'   and id_ano=to_char(sysdate,'YYYY') and        tr.id_tipo_ausencia=h.id_tipo_ausencia   and TR_ANULADO = 'NO' ORDER BY 1");

@@ -30,7 +30,15 @@ java.util.Calendar cal_periodo = java.util.Calendar.getInstance();
 Integer periodo = new Integer( cal_periodo.get(java.util.Calendar.YEAR) );
 if (RSQUERY__MMColParam2.equals("0000")) { RSQUERY__MMColParam2 = periodo.toString(); }
 %>
-<%
+// --- Inicio Comentario ---
+// Descripción: Obtener el listado de ausencias del funcionario para un año específico.
+//              Incluye fechas, horas, tipo de ausencia, estado, justificación y enlace a ficheros.
+// Parámetros: RSQUERY__MMColParam1 - ID del funcionario (se obtiene de la sesión MM_ID_FUNCIONARIO).
+//             RSQUERY__MMColParam2 - Año de las ausencias (se obtiene del parámetro PERIODO).
+//             RSQUERY__MMColParam3 - Indicador de modo (Total/Detalle, se obtiene del parámetro TOTAL).
+// Posible mejora: Añadir índices en (id_funcionario, id_ano, anulado).
+//                 Usar join explícito en lugar de join implícito.
+// --- Fin Comentario ---
 Driver DriverRSQUERY = (Driver)Class.forName(MM_RRHH_DRIVER).newInstance();
 Connection ConnRSQUERY = DriverManager.getConnection(MM_RRHH_STRING,MM_RRHH_USERNAME,MM_RRHH_PASSWORD);
 PreparedStatement StatementRSQUERY = ConnRSQUERY.prepareStatement("SELECT DECODE(JUSTIFICADO,'--','',CHEQUEA_ENLACE_FICHERO_JUS(ID_ANO,ID_FUNCIONARIO,ID_AUSENCIA,id_estado,'A',2)) as JUSTI_FICHERO,R.JUSTIFICADO,ID_AUSENCIA,FECHA_INICIO AS FECHA_INICIO2, TRE.DESC_ESTADO_PERMISO as DESC_ESTADO_PERMISO,         R.ID_ANO,          R.ID_TIPO_AUSENCIA,          TO_CHAR(fecha_INICIO,'DD/MM/YY') || '' || DECODE( TO_CHAR(fecha_INICIO,'DD/MM/YY'), TO_CHAR(fecha_FIN,'DD/MM/YY'),'',' a ' || TO_CHAR(fecha_FIN,'DD/MM/YY') ) as FECHA_INICIO,         to_char(FECHA_INICIO,'HH24:MI ') as HORA_INICIO,         to_char(FECHA_FIN,'HH24:MI ') as HORA_FIN,         FECHA_FIN,    lpad (((TOTAL_HORAS)  -  mod((TOTAL_HORAS),60))/60,2,0)|| ':' || lpad(mod((TOTAL_HORAS),60),2,0) as TOTAL_HORAS,          TR.ID_TIPO_AUSENCIA,          INITCAP(DESC_TIPO_AUSENCIA) AS DESC_TIPO_AUSENCIA  FROM AUSENCIA R, TR_ESTADO_PERMISO tre,        TR_TIPO_AUSENCIA TR  WHERE TRE.ID_ESTADO_PERMISO=R.ID_ESTADO   AND           R.ID_TIPO_AUSENCIA = TR.ID_TIPO_AUSENCIA AND        (ANULADO IS NULL OR ANULADO =  'NO')          AND R.ID_ANO = '" + RSQUERY__MMColParam2 + "'  AND           R.ID_FUNCIONARIO = '" + RSQUERY__MMColParam1 + "'      AND  '" + RSQUERY__MMColParam3 + "'='" + RSQUERY__MMColParam3 + "'  ORDER BY fecha_INICIO2  DESC");
@@ -40,7 +48,13 @@ boolean RSQUERY_hasData = !RSQUERY_isEmpty;
 Object RSQUERY_data;
 int RSQUERY_numRows = 0;
 %>
-<%
+// --- Inicio Comentario ---
+// Descripción: Obtener los años distintos de las ausencias registradas en el sistema.
+//              Filtrado para años entre 2014 y 2054 para mostrar en el selector de período.
+// Parámetros: Ninguno.
+// Posible mejora: Añadir índice en FECHA_INICIO (columna de fecha).
+//                 Considerar usar extracción de año con función TO_CHAR con índice funcional.
+// --- Fin Comentario ---
 Driver DriverRSPERIODO = (Driver)Class.forName(MM_RRHH_DRIVER).newInstance();
 Connection ConnRSPERIODO = DriverManager.getConnection(MM_RRHH_STRING,MM_RRHH_USERNAME,MM_RRHH_PASSWORD);
 PreparedStatement StatementRSPERIODO = ConnRSPERIODO.prepareStatement("SELECT DISTINCT TO_CHAR(FECHA_INICIO,'YYYY') AS PERIODO  FROM AUSENCIA where TO_CHAR(FECHA_INICIO,'YYYY')> 2014  and  TO_CHAR(FECHA_INICIO,'YYYY')< 2054 order by 1 desc");
@@ -58,7 +72,14 @@ if (session.getValue("MM_ID_FUNCIONARIO")    !=null) {RSQUERY_TOTALES__MMColPara
 String RSQUERY_TOTALES__MMColParam2 = "0000";
 if (request.getParameter("PERIODO")     !=null) {RSQUERY_TOTALES__MMColParam2 = (String)request.getParameter("PERIODO")    ;}
 %>
-<%
+// --- Inicio Comentario ---
+// Descripción: Obtener los totales de horas por tipo de ausencia para un funcionario y año.
+//              Agrupa y suma las horas totales por tipo de ausencia mostrando el resultado en formato HH:MM.
+// Parámetros: RSQUERY_TOTALES__MMColParam1 - ID del funcionario (se obtiene de la sesión MM_ID_FUNCIONARIO).
+//             RSQUERY_TOTALES__MMColParam2 - Año de las ausencias (se obtiene del parámetro PERIODO).
+// Posible mejora: Añadir índices en (id_funcionario, id_ano, anulado, id_tipo_ausencia).
+//                 Considerar usar join explícito en lugar de join implícito.
+// --- Fin Comentario ---
 Driver DriverRSQUERY_TOTALES = (Driver)Class.forName(MM_RRHH_DRIVER).newInstance();
 Connection ConnRSQUERY_TOTALES = DriverManager.getConnection(MM_RRHH_STRING,MM_RRHH_USERNAME,MM_RRHH_PASSWORD);
 PreparedStatement StatementRSQUERY_TOTALES = ConnRSQUERY_TOTALES.prepareStatement("SELECT R.ID_ANO,                lpad ((sum(TOTAL_HORAS)  -  mod(sum(TOTAL_HORAS),60))/60,3,0)|| ':' || lpad(mod(sum(TOTAL_HORAS),60),2,0) as HORAS_TOTALES,         INITCAP(DESC_TIPO_AUSENCIA) AS DESC_TIPO_AUSENCIA  FROM AUSENCIA R,        TR_TIPO_AUSENCIA TR  WHERE R.ID_TIPO_AUSENCIA = TR.ID_TIPO_AUSENCIA AND        (ANULADO IS NULL OR ANULADO =  'NO')          AND R.ID_ANO = '" + RSQUERY_TOTALES__MMColParam2 + "' AND  R.ID_FUNCIONARIO='" + RSQUERY_TOTALES__MMColParam1 + "'  group by R.ID_ANO,INITCAP(DESC_TIPO_AUSENCIA)");
@@ -76,7 +97,14 @@ if (session.getValue("MM_ID_FUNCIONARIO") !=null) {RS_HORASEXTRAS__MMColParam1 =
 String RS_HORASEXTRAS__MMColParam2 = "0000";
 if (request.getParameter("PERIODO")      !=null) {RS_HORASEXTRAS__MMColParam2 = (String)request.getParameter("PERIODO")     ;}
 %>
-<%
+// --- Inicio Comentario ---
+// Descripción: Obtener las horas extras compensables del funcionario.
+//              Muestra total de horas, utilizadas y disponibles en formato HH:MM.
+// Parámetros: RS_HORASEXTRAS__MMColParam1 - ID del funcionario (se obtiene de la sesión MM_ID_FUNCIONARIO).
+//             RS_HORASEXTRAS__MMColParam2 - Año (se obtiene del parámetro PERIODO, comentado en la consulta).
+// Posible mejora: Añadir índice en (id_funcionario, id_ano).
+//                 Considerar descomentar el filtro por año si es necesario.
+// --- Fin Comentario ---
 Driver DriverRS_HORASEXTRAS = (Driver)Class.forName(MM_RRHH_DRIVER).newInstance();
 Connection ConnRS_HORASEXTRAS = DriverManager.getConnection(MM_RRHH_STRING,MM_RRHH_USERNAME,MM_RRHH_PASSWORD);
 PreparedStatement StatementRS_HORASEXTRAS = ConnRS_HORASEXTRAS.prepareStatement("SELECT to_char(sysdate,'YYYY') as ID_ANO,lpad((total  -  mod(total,60))/60,4,0)  || ':' || lpad(mod(total,60),2,0) as Horas_extras,  lpad((utilizadas -  mod(utilizadas,60))/60,4,0)  || ':' || lpad(mod(utilizadas,60),2,0) as utilizadas, lpad(  ( (total-utilizadas)  -  mod((total-utilizadas),60))/60,4,0)  || ':' || lpad(mod((total-utilizadas),60),2,0) as disponible  FROM horas_extras_ausencias  WHERE id_funcionario='" + RS_HORASEXTRAS__MMColParam1 + "'  -- and id_ano=" + RS_HORASEXTRAS__MMColParam2 + "");
