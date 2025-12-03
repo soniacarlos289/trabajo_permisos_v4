@@ -56,21 +56,12 @@ function show_finger()
 <link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/custom-style.css">
 </head>
 <body>
-<div id="apliweb-tabform">
-<div>
-<ul id="tabh">
-    <li id="active"><a href="#" id="current">Permisos/Ausencias</a></li>
-     <li><a href="gestion/Permisos_vo_rrhh/index.jsp">Autorizar</a></li>
-   
-     <li><a href="gestion/Finger_apl/index.jsp"  class="ah12b">Finger</a></li>
-    <li><a href="gestion/Gestion/index.jsp" class="ah12b">Horas Sindicales</a></li>   
-    <li><a href="gestion/Bolsa_proceso/index.jsp" class="ah12b">Proceso Bolsa</a></li>   
- <li><a href="gestion/calendario_laboral/index.jsp" class="ah12b">Calendario Laboral</a></li> 
- <li><a href="gestion/Bajas/index.jsp" >Bajas Fichero</a></li>
-  <li><a href="gestion/Informes/index_informes.jsp" >Informes</a></li>
-  </ul>
-</div>
-<div id="form">
+
+<!-- Include the sidebar menu -->
+<%@ include file="menu.jsp" %>
+
+<!-- Main content area with proper spacing for sidebar -->
+<div class="content-wrapper">
  <table width="95%" border="0" cellspacing="0" cellpadding="2">
                           <tr> 
                             <td> 
@@ -131,7 +122,6 @@ function show_finger()
                             </td>
                           </tr>
                         </table>
-</div>
 </div>
 <script src="<%= request.getContextPath() %>/resources/js/bootstrap.bundle.min.js"></script>
 </body>

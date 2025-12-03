@@ -30,7 +30,7 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
 }
 
-/* Navigation Tabs */
+/* Navigation Tabs (Legacy - for compatibility) */
 #apliweb-tabform {
     background-color: var(--white);
     border-radius: 8px;
@@ -73,6 +73,42 @@ h1, h2, h3, h4, h5, h6 {
 #tabh li a#current {
     background-color: var(--white);
     color: var(--primary-blue);
+}
+
+/* Sub-navigation Tabs (Legacy - for compatibility) */
+#subtabh {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    background-color: var(--light-blue);
+    flex-wrap: wrap;
+    border-bottom: 2px solid var(--border-color);
+}
+
+#subtabh li {
+    flex: 0 1 auto;
+}
+
+#subtabh li a {
+    display: block;
+    padding: 10px 15px;
+    color: var(--primary-blue);
+    text-decoration: none;
+    border-right: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+#subtabh li:last-child a {
+    border-right: none;
+}
+
+#subtabh li a:hover,
+#subtabh li#active a,
+#subtabh li a#current {
+    background-color: var(--secondary-blue);
+    color: var(--white);
 }
 
 /* Form Styles */
