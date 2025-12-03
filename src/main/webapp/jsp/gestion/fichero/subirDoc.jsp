@@ -93,8 +93,7 @@ if (request.getParameter("PERMISO")    !=null) {RS__MMColParam2 = (String)reques
 	      out.println("<html>");
 	      out.println("<body>");
 	      out.println("<p>No file uploaded</p>"); 
-	      out.println("<script src="<%= request.getContextPath() %>/resources/js/bootstrap.bundle.min.js"></script>
-");
+      out.println("</body>");
 	      out.println("</html>");
 	   }
   
