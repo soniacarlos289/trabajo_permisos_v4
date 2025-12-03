@@ -18,7 +18,10 @@ PERMI.execute();
 <html>
 <head>
 <title>Mis Gestiones - Resultado de la Solicitud</title>
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/bootstrap.min.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/custom-style.css">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <body>
 <div id="apliweb-tabform">
 <div>
@@ -72,7 +75,8 @@ PERMI.execute();
 <div class="contenido" style="clear:both"><a href="index_fichero_bajas.jsp" class="volver" title="VOLVER">VOLVER</a></div>
 <% } %>
 </div> 
-</body>
+<script src="<%= request.getContextPath() %>/resources/js/bootstrap.bundle.min.js"></script>
+
 </html>
 
 <%

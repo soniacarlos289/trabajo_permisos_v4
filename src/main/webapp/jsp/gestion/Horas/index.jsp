@@ -70,7 +70,10 @@ return "";
 <html>
 <head>
 <title>Gesti&oacute;n de Horas - Administraci&oacute;n de RRHH</title>
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/bootstrap.min.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/custom-style.css">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <body>
 
@@ -195,7 +198,8 @@ RSPERIODO_isEmpty = !RSPERIODO_hasData;
       </table>
 	</div>
 </div>
-</body>
+<script src="<%= request.getContextPath() %>/resources/js/bootstrap.bundle.min.js"></script>
+
 </html>
 <%
 RSQUERY.close();

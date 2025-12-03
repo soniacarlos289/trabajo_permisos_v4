@@ -38,7 +38,10 @@ String thisPage = request.getRequestURI();
 <html>
 <head>
 <title>EJECUTANDO INFORME.....</title>
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/bootstrap.min.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/custom-style.css">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 
 </head>
@@ -53,7 +56,8 @@ String thisPage = request.getRequestURI();
 
 
 
-</body>
+<script src="<%= request.getContextPath() %>/resources/js/bootstrap.bundle.min.js"></script>
+
 </html>
 
 

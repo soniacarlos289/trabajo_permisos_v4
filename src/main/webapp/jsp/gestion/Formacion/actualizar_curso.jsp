@@ -26,8 +26,11 @@ String mensaje ="";
 %>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
     <title>Actualización de Cursos</title>
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/bootstrap.min.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/custom-style.css">
 <link href="../estilos.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -64,7 +67,8 @@ String mensaje ="";
         
         
     </table>
-</body>
+<script src="<%= request.getContextPath() %>/resources/js/bootstrap.bundle.min.js"></script>
+
 </html>
 
 
