@@ -118,7 +118,7 @@ String thisPage = request.getRequestURI();
 
 function show_confirmar(id)
 {
-   var text = "¿Realmente desea eliminar Justificante?";
+   var text = "ï¿½Realmente desea eliminar Justificante?";
    var r = confirm(text);
    if (r==true) { 
                  //MM_goToURL('self',url + id);
@@ -126,41 +126,16 @@ function show_confirmar(id)
 				 window.open('../fichero/eliminarDoc.jsp?PERMISO=A&ID='+id , null,top=0,left=100,height=600,width=940,scrollbars=yes,status=no,toolbar=no ,menubar=no,location=0,directories=no);
    }
    else { 
-      alert("Operación cancelada!");  
+      alert("Operaciï¿½n cancelada!");  
    }
 }
 </script>
-<div id="apliweb-tabform">
-<div>
-<ul id="tabh">
-    <li id="active"><a href="../../index_busqueda.jsp" id="current">Permisos/Ausencias</a></li>
-     <li><a href="../../gestion/Permisos_vo_rrhh/index.jsp">Autorizar</a></li>
-          
-    <li><a href="../../gestion/Finger_apl/index.jsp" class="ah12b">Finger</a></li>    
-    <li><a href="../../gestion/Gestion/index.jsp" class="ah12b">Horas Sindicales</a></li>   
-    <li><a href="../../gestion/Bolsa_proceso/index.jsp" class="ah12b">Proceso Bolsa</a></li>  
-   <li><a href="../../gestion/calendario_laboral/index.jsp" class="ah12b">Calendario Laboral</a></li>
-    <li><a href="../../gestion/Bajas/index.jsp"  >Bajas Fichero</a></li>
-    <li><a href="../../gestion/Informes/index_informes.jsp" >Informes</a></li>
-<li><a href="../../gestion/Formacion/index_formacion.jsp" >Formacion</a></li>
 
-  </ul>
-</div>
-  <div id="form">
-<div>
-	  <ul id="subtabh">
-		<li id="active"><a href="../Datos" >Datos per.</a></li>
-		<li><a href="../Permisos" >Permisos</a></li>
-		<li><a href="../Ausencias" id="current">Ausencias</a></li>		
-		<li><a href="../Horas">Horas</a></li>
-		<li><a href="../Firmas">Firmas</a></li>
-		<li><a href="../Finger">Fichajes</a></li>
-		<li><a href="../Bolsa">Bolsa</a></li>
-		<li><a href="../Bolsa_concilia" >Bolsa Conciliacion</a></li>
-		<li><a href="../Incidencias_finger" >Incidencias  Fichajes</a></li>
-	  </ul>
-	</div>
-	<div id="subform">
+<!-- Include the sidebar menu -->
+<%@ include file="../../menu.jsp" %>
+
+<!-- Main content area with proper spacing for sidebar -->
+<div class="content-wrapper">
 	<table width="95%" border="0" cellspacing="0" cellpadding="0">
                           <tr> 
                             <td bgcolor="#E0E0E0"> 
@@ -328,8 +303,7 @@ RSPERIODO_isEmpty = !RSPERIODO_hasData;
                             </td>
                           </tr>
                         </table>
-	</div>
-	</div>
+</div>
 	
   <%
 RSPERIODO.close();

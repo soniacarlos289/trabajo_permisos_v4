@@ -74,32 +74,12 @@ function envia_unavez()
 </script>
 </head>
 <body>
-<div id="apliweb-tabform">
-<div>
-<ul id="tabh">
-    <li id="active"><a href="../../index_busqueda.jsp" id="current">Permisos/Ausencias</a></li>
-   
-    <li><a href="" onClick="show_finger()"  class="ah12b">Finger</a></li>
-    <li><a href="gestion/Gestion/index.jsp" class="ah12b">Horas Sindicales</a></li>  
-    <li><a href="../../gestion/Bolsa_proceso/index.jsp" class="ah12b">Proceso Bolsa</a></li>  
-    <li><a href="../../gestion/calendario_laboral/index.jsp" class="ah12b">Calendario Laboral</a></li>
-      <li><a href="../../gestion/Bajas/index.jsp"  >Bajas Fichero</a></li> 
-       <li><a href="../../gestion/Informes/index_informes.jsp" >Informes</a></li>      
- </ul>
-</div>
-  <div id="form">
-<div>
-	  <ul id="subtabh">
-		<li id="active"><a href="../Datos" >Datos per.</a></li>
-		<li><a href="../Permisos" >Permisos</a></li>
-		<li><a href="../Ausencias" id="current">Ausencias</a></li>	
-		<li><a href="../Horas">Horas</a></li>
-		<li><a href="../Firmas">Firmas</a></li>
-		<li><a href="../Finger">Fichajes</a></li>
-		<li><a href="../Bolsa">Bolsa</a></li>
-	  </ul>
-	</div>
-	<div id="subform">
+
+<!-- Include the sidebar menu -->
+<%@ include file="../../menu.jsp" %>
+
+<!-- Main content area with proper spacing for sidebar -->
+<div class="content-wrapper">
 	<table width="95%" border="0" cellspacing="5" cellpadding="0">
                           <form name="formAusencia" method="get" action="editar_result.jsp">
                             <tr> 
@@ -109,7 +89,7 @@ function envia_unavez()
                                     <td> 
                                       <input type="button" disabled="yes" value="Nuevo" name="Nuevo" onClick="window.location='alta.jsp'">
                                     </td>
-                                    <td>  <input type="button" value="volver atrás" name="volver atrás2" onClick="history.back()" />
+                                    <td>  <input type="button" value="volver atrï¿½s" name="volver atrï¿½s2" onClick="history.back()" />
                                </td>
                                     <td>&nbsp;<b><%= session.getValue("MM_ID_FUNCIONARIO_NOMBRE") %> <%= session.getValue("MM_ID_FUNCIONARIO_APE1") %> <%= session.getValue("MM_ID_FUNCIONARIO_APE2") %></b>&nbsp; </td>
                                   </tr>
@@ -222,8 +202,7 @@ RSESTADO_isEmpty = !RSESTADO_hasData;
                           </tr>
 </form>
       </table>
-	
-	</div>
+
 </div>
 
 <script src="<%= request.getContextPath() %>/resources/js/bootstrap.bundle.min.js"></script>
