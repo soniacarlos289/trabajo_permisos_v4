@@ -1,1 +1,2 @@
-/target/
+.gitignore original content
+src/main/resources
