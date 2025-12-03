@@ -58,8 +58,6 @@ function show_confirm(id, description, url)
 <head>
 <title>Administraci&oacute;n de RRHH</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<link href="esquema.css" rel="stylesheet" type="text/css">
-<link href="apliweb.css" rel="stylesheet" type="text/css">
 <script language="JavaScript" type="text/javascript" src="../../imagen/calendario.js"></script>
 </head>
 <body>

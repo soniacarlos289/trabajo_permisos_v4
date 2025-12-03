@@ -82,8 +82,6 @@ return "";
 <title>Administraci&oacute;n de RRHH</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <% if (RS_EXCEL.equals("0")){%>
-<link href="esquema.css" rel="stylesheet" type="text/css">
-<link href="apliweb.css" rel="stylesheet" type="text/css">
 <% }  %>
 </head>
 <body>

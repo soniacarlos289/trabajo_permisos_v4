@@ -76,8 +76,6 @@ if (RS_EXCEL.equals("1") )
 if (RS_EXCEL.equals("1") )
 {  
 %>
-<link href="esquema.css" rel="stylesheet" type="text/css">
-<link href="apliweb.css" rel="stylesheet" type="text/css">
 <% } 
 %>
 <%

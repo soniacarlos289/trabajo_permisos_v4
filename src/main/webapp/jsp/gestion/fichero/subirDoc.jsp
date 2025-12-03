@@ -21,7 +21,6 @@ if (request.getParameter("PERMISO")    !=null) {RS__MMColParam2 = (String)reques
 <head>
 <title>Justificante de Permiso/Ausencia</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<link href="esquema.css" rel="stylesheet" type="text/css">
 <link href="RRHH.css" rel="stylesheet" type="text/css">
 </head>
 <body>

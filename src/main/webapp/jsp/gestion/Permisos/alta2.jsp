@@ -256,8 +256,6 @@ int RSQUEYFECHAS_numRows = 0;
 <head>
 <title>Gesti&oacute;n de Permisos - Administraci&oacute;n de RRHH</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<link href="esquema.css" rel="stylesheet" type="text/css">
-<link href="apliweb.css" rel="stylesheet" type="text/css">
 <script language="JavaScript" type="text/javascript" src="../../imagen/calendario.js"></script>
 <body OnLoad="carga_final()">
 <table width="760" border="0" cellspacing="0" cellpadding="0">

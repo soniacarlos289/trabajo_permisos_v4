@@ -45,8 +45,6 @@ String thisPage = request.getRequestURI();
 <meta http-equiv="refresh" content="0;URL=index.jsp?">  
     
 
-<link href="esquema.css" rel="stylesheet" type="text/css">
-<link href="apliweb.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="apliweb-tabform">

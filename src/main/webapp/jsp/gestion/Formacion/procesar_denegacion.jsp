@@ -27,8 +27,6 @@ return "";
     <meta charset="UTF-8">
     <title>Procesar Denegación de Solicitudes</title>
 <link href="../estilos.css" rel="stylesheet" type="text/css">
-<link href="../esquema.css" rel="stylesheet" type="text/css">
-<link href="../apliweb.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <div id="apliweb-tabform">
