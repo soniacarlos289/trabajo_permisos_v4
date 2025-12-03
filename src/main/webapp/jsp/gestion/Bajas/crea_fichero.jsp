@@ -19,8 +19,6 @@ PERMI.execute();
 <head>
 <title>Mis Gestiones - Resultado de la Solicitud</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<link href="esquema.css" rel="stylesheet" type="text/css">
-<link href="apliweb.css" rel="stylesheet" type="text/css">
 <body>
 <div id="apliweb-tabform">
 <div>

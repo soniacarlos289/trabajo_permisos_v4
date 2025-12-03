@@ -39,8 +39,6 @@ String thisPage = request.getRequestURI();
 <title>Gesti&oacute;n de Permisos - Administraci&oacute;n de RRHH</title>
 
 <meta http-equiv="refresh" content="0;URL=index.jsp">
-<link href="esquema.css" rel="stylesheet" type="text/css">
-<link href="apliweb.css" rel="stylesheet" type="text/css">
 <body><div id="apliweb-tabform">
 <div>
 <ul id="tabh">

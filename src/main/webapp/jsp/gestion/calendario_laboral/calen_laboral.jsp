@@ -97,8 +97,6 @@ String thisPage = request.getRequestURI();
 <html>
 <head>
 <title>Mis Gestiones - Planificador</title>
-<link href="esquema.css" rel="stylesheet" type="text/css">
-<link href="apliweb.css" rel="stylesheet" type="text/css">
 <script language="JavaScript" type="text/javascript" src="calendario.js"></script>
 <body>
 

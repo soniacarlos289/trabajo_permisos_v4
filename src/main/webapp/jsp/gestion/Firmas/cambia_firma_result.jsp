@@ -49,8 +49,6 @@ PERMI.execute();
 <title>Gesti&oacute;n de RRHH - Administraci&oacute;n de RRHH</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <meta http-equiv="refresh" content="0;URL=index.jsp">
-<link href="esquema.css" rel="stylesheet" type="text/css">
-<link href="apliweb.css" rel="stylesheet" type="text/css">
 <body>
 <div id="apliweb-tabform">
 <div>

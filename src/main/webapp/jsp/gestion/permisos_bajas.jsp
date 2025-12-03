@@ -233,8 +233,6 @@ String MM_moveFirst,MM_moveLast,MM_moveNext,MM_movePrev;
 <head>
 <title>Resultados de la b&uacute;squeda - Administrac&oacute;n de RRHH</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<link href="esquema.css" rel="stylesheet" type="text/css">
-<link href="apliweb.css" rel="stylesheet" type="text/css">
 
 </head>
 <body>

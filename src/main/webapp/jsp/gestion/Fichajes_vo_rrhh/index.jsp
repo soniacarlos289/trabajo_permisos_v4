@@ -184,8 +184,6 @@ function envia_unavez(firma)
 <head>
 <title>Gesti&oacute;n de Fichajes - Administraci&oacute;n de RRHH</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<link href="esquema.css" rel="stylesheet" type="text/css">
-<link href="apliweb.css" rel="stylesheet" type="text/css">
 
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"><body OnLoad="carga_final()">
 <div id="apliweb-tabform">

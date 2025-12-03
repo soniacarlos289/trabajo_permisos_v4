@@ -23,8 +23,6 @@ String thisPage = request.getRequestURI();
 <head>
 <title>FINGER - Vistas de Fichajes</title>
 <meta http-equiv="REFRESH" content="15"> 
-<link href="esquema.css" rel="stylesheet" type="text/css">
-<link href="apliweb.css" rel="stylesheet" type="text/css">
 <script language="JavaScript" type="text/javascript" src="../../imagen/calendario.js"></script>
 <body>
 <table width="830" border="0" cellspacing="0" cellpadding="0">
