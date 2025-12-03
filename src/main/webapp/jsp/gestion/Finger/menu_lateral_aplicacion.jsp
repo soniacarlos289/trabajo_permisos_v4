@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="UTF-8">
 <title>Menú Lateral</title>
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/bootstrap.min.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/custom-style.css">
 
 <style>
 body {
@@ -137,5 +140,6 @@ main {
 <main>
 <p>Contenido principal aquí...</p>
 </main>
-</body>
+<script src="<%= request.getContextPath() %>/resources/js/bootstrap.bundle.min.js"></script>
+
 </html>

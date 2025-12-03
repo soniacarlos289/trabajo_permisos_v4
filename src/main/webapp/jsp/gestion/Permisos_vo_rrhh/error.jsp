@@ -7,7 +7,10 @@ String mensaje = exception.getMessage();
 <html>
 <head>
 <title>Gesti&oacute;n de Permisos - Administraci&oacute;n de RRHH</title>
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/bootstrap.min.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/custom-style.css">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <body>
 
 <table width="760" border="0" cellspacing="0" cellpadding="1">
@@ -70,6 +73,7 @@ String mensaje = exception.getMessage();
   </tr>
 </table>
 
-</body>
+<script src="<%= request.getContextPath() %>/resources/js/bootstrap.bundle.min.js"></script>
+
 </html>
 

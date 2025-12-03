@@ -75,7 +75,10 @@ String thisPage = request.getRequestURI();
 <html>
 <head>
 <title>Actualizando....</title>
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/bootstrap.min.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/custom-style.css">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <meta http-equiv="refresh" content="0;URL=index.jsp">
 </head>
@@ -93,7 +96,8 @@ String thisPage = request.getRequestURI();
 <%= PERMI__V_DESCRIPCION%>
 <%= PERMI__V_ANULADO%>
 <%=  PERMI__V_ID_USUARIO %>
-</body>
+<script src="<%= request.getContextPath() %>/resources/js/bootstrap.bundle.min.js"></script>
+
 </html>
 
 <%

@@ -80,7 +80,10 @@ if (request.getParameter("TIPOPERMISO")      !=null) {RSQUERY__TIPOPERMISO = (St
 <html>
 <head>
 <title>Resultados de la b&uacute;squeda - Administraci&oacute;n de RRHH</title>
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/bootstrap.min.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/custom-style.css">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style type="text/css">
 <!--
 .Estilo3 {font-size: 10px}
@@ -190,7 +193,8 @@ if (request.getParameter("TIPOPERMISO")      !=null) {RSQUERY__TIPOPERMISO = (St
     </td>
   </tr>
 </table>
-</body>
+<script src="<%= request.getContextPath() %>/resources/js/bootstrap.bundle.min.js"></script>
+
 </html>
 <%
 RSQUERYPER.close();

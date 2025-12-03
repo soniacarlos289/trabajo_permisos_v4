@@ -80,7 +80,10 @@ return "";
 <html>
 <head>
 <title>Administraci&oacute;n de RRHH</title>
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/bootstrap.min.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/custom-style.css">
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <% if (RS_EXCEL.equals("0")){%>
 <% }  %>
 </head>
@@ -187,7 +190,8 @@ RSANOCALENDARIO_isEmpty = !RSANOCALENDARIO_hasData;
                                        %>
                                     </table></div>
 </div></form>
-</body>
+<script src="<%= request.getContextPath() %>/resources/js/bootstrap.bundle.min.js"></script>
+
 </html>
 <script language="JavaScript">
 nTitulares = <%= sin_incidencia  %>

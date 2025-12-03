@@ -24,8 +24,11 @@ return "";
 %>
 <html lang="es">
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
     <title>Procesar Denegación de Solicitudes</title>
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/bootstrap.min.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/custom-style.css">
 <link href="../estilos.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -95,5 +98,6 @@ return "";
     %>
     <br>
     <a href="index_formacion.jsp">Volver a la lista de cursos</a>
-</body>
+<script src="<%= request.getContextPath() %>/resources/js/bootstrap.bundle.min.js"></script>
+
 </html>

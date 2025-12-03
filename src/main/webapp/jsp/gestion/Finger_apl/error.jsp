@@ -17,7 +17,10 @@ if (fin < 0) { fin = 1; }
 %>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Gesti&oacute;n de Permisos - Administraci&oacute;n de RRHH</title>
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/bootstrap.min.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/custom-style.css">
 <body>
 <table width="760" border="0" cellspacing="0" cellpadding="0">
   <tr> 
@@ -383,6 +386,7 @@ if (fin < 0) { fin = 1; }
     </td>    
   </tr>
 </table>
-</body>
+<script src="<%= request.getContextPath() %>/resources/js/bootstrap.bundle.min.js"></script>
+
 </html>
 

@@ -96,7 +96,10 @@ String thisPage = request.getRequestURI();
 %>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mis Gestiones - Planificador</title>
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/bootstrap.min.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/custom-style.css">
 <script language="JavaScript" type="text/javascript" src="calendario.js"></script>
 <body>
 

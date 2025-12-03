@@ -1,0 +1,350 @@
+/**
+ * Custom Stylesheet for RRHH Application
+ * Blue and White Color Scheme
+ * Author: Auto-generated for trabajo_permisos_v4 project
+ */
+
+/* Color Variables */
+:root {
+    --primary-blue: #1e5da8;
+    --secondary-blue: #3498db;
+    --light-blue: #e3f2fd;
+    --dark-blue: #0d47a1;
+    --white: #ffffff;
+    --light-gray: #f5f5f5;
+    --border-color: #dee2e6;
+    --text-primary: #2c3e50;
+    --text-secondary: #5a6c7d;
+}
+
+/* Global Styles */
+body {
+    background-color: var(--light-gray);
+    color: var(--text-primary);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Header and Title Styles */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--primary-blue);
+    font-weight: 600;
+}
+
+/* Navigation Tabs */
+#apliweb-tabform {
+    background-color: var(--white);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+#tabh {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+    flex-wrap: wrap;
+}
+
+#tabh li {
+    flex: 1;
+    min-width: 150px;
+}
+
+#tabh li a {
+    display: block;
+    padding: 12px 20px;
+    color: var(--white);
+    text-decoration: none;
+    text-align: center;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+#tabh li:last-child a {
+    border-right: none;
+}
+
+#tabh li a:hover,
+#tabh li#active a,
+#tabh li a#current {
+    background-color: var(--white);
+    color: var(--primary-blue);
+}
+
+/* Form Styles */
+#form {
+    background-color: var(--white);
+    padding: 25px;
+    border-radius: 0 0 8px 8px;
+}
+
+form {
+    background-color: var(--white);
+    padding: 20px;
+    border-radius: 8px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="number"],
+input[type="date"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--secondary-blue);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+/* Button Styles */
+input[type="submit"],
+input[type="button"],
+button,
+.btn {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+    color: var(--white);
+    border: none;
+    padding: 10px 25px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+input[type="submit"]:hover,
+input[type="button"]:hover,
+button:hover,
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background-color: var(--white);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+table thead {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+    color: var(--white);
+}
+
+table thead th {
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+    border: none;
+}
+
+table tbody tr {
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.2s ease;
+}
+
+table tbody tr:hover {
+    background-color: var(--light-blue);
+}
+
+table tbody td {
+    padding: 12px 15px;
+    border: none;
+}
+
+table tbody tr:last-child {
+    border-bottom: none;
+}
+
+/* Alternating row colors */
+table tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+/* Card/Panel Styles */
+.card,
+.panel {
+    background-color: var(--white);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.card-header,
+.panel-header {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 100%);
+    color: var(--white);
+    padding: 15px 20px;
+    margin: -20px -20px 20px -20px;
+    border-radius: 8px 8px 0 0;
+    font-weight: 600;
+}
+
+/* Search Box Styles */
+.search-container {
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.search-title {
+    color: var(--primary-blue);
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Alert/Message Styles */
+.alert,
+.message {
+    padding: 15px 20px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.alert-success,
+.message-success {
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+}
+
+.alert-error,
+.message-error {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+}
+
+.alert-warning,
+.message-warning {
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+    color: #856404;
+}
+
+.alert-info,
+.message-info {
+    background-color: var(--light-blue);
+    border: 1px solid #bee5eb;
+    color: #0c5460;
+}
+
+/* Link Styles */
+a {
+    color: var(--secondary-blue);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--dark-blue);
+    text-decoration: underline;
+}
+
+/* Container Styles */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #tabh {
+        flex-direction: column;
+    }
+    
+    #tabh li {
+        width: 100%;
+        min-width: auto;
+    }
+    
+    #tabh li a {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    table {
+        font-size: 12px;
+    }
+    
+    table thead th,
+    table tbody td {
+        padding: 8px 10px;
+    }
+}
+
+/* Legacy color compatibility */
+[bgcolor="#FFFFFF"] {
+    background-color: var(--white) !important;
+}
+
+[bgcolor="#eef4f2"] {
+    background-color: var(--light-blue) !important;
+}
+
+/* Image styles */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Status badges */
+.badge {
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.badge-primary {
+    background-color: var(--primary-blue);
+    color: var(--white);
+}
+
+.badge-success {
+    background-color: #28a745;
+    color: var(--white);
+}
+
+.badge-warning {
+    background-color: #ffc107;
+    color: #212529;
+}
+
+.badge-danger {
+    background-color: #dc3545;
+    color: var(--white);
+}

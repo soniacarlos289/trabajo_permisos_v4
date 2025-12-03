@@ -56,7 +56,10 @@ String thisPage = request.getRequestURI();
 %>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Gesti&oacute;n de Ausencias - Administraci&oacute;n de RRHH</title>
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/bootstrap.min.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/custom-style.css">
 <body>
 <table width="760" border="0" cellspacing="0" cellpadding="0">
   <tr> 
@@ -205,7 +208,8 @@ RSPERIO_isEmpty = !RSPERIO_hasData;
     </td>   
   </tr>
 </table>
-</body>
+<script src="<%= request.getContextPath() %>/resources/js/bootstrap.bundle.min.js"></script>
+
 </html>
 <%
 RSPERIODO.close();

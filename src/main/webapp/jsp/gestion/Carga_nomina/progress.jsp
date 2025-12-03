@@ -2,8 +2,11 @@
 <!DOCTYPE html>
 <html>
   <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
     <title>Progreso de Procesado</title>
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/bootstrap.min.css">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/resources/css/custom-style.css">
   </head>
   <body>
     <h2>Procesando nóminas…</h2>
@@ -30,7 +33,8 @@
         }
       }, 1000);
     </script>
-  </body>
+  <script src="<%= request.getContextPath() %>/resources/js/bootstrap.bundle.min.js"></script>
+
 </html>
 
 
