@@ -6,11 +6,10 @@ import java.sql.SQLException;
 
 public class OracleConnectionManager {
 
-    private static final String URL = "jdbc";
-    private static final String USER = "XXX";
-    private static final String PASSWORD = "YYY";
-
     public static Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(URL, USER, PASSWORD);
+        String url = ConfigProperties.getDbOracleUrl();
+        String user = ConfigProperties.getDbOracleUser();
+        String password = ConfigProperties.getDbOraclePassword();
+        return DriverManager.getConnection(url, user, password);
     }
 }

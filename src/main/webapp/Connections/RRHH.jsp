@@ -1,11 +1,13 @@
+<%@ page import="permisos.ConfigProperties" %>
 <%
 // FileName="oracle_jdbc_conn.htm"
 // Type="JDBC"
 // HTTP="true"
 // Catalog=""
 // Schema=""
-String MM_RRHH_DRIVER = "oracle.jdbc.driver.OracleDriver";
-String MM_RRHH_USERNAME = "RRHH";
-String MM_RRHH_PASSWORD = "Y3pEt78!fH";
-String MM_RRHH_STRING = "jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST= oraprod-scan)(PORT=1521))(LOAD_BALANCE=yes)(CONNECT_DATA=(SERVER=DEDICATED)(SERVICE_NAME= PROD)))";
+// Configuración cargada desde application.properties
+String MM_RRHH_DRIVER = ConfigProperties.getDbRrhhDriver();
+String MM_RRHH_USERNAME = ConfigProperties.getDbRrhhUsername();
+String MM_RRHH_PASSWORD = ConfigProperties.getDbRrhhPassword();
+String MM_RRHH_STRING = ConfigProperties.getDbRrhhString();
 %>

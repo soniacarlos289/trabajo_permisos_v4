@@ -17,17 +17,7 @@ import org.apache.oltu.oauth2.common.message.types.GrantType;
 import org.json.*;
 
 public class actualiza_cursos {
-	  private static final String API_URL = "https://api.saviacloud.net/ginpix7/V2/Entidades/1/PlanCod/2025/search/(AnioPlan=2025)";
-	    private static final String OAUTH_TOKEN = "TU_TOKEN_OAUTH"; // Reemplazar con el token v�lido
-	    private static final String DB_URL = "";
-	    private static final String DB_USER = "";
-	    private static final String DB_PASSWORD = "";
-		
-	    public static final String TOKEN_REQUEST_URL = "";
-	    public static final String CLIENT_ID = "";
-	    public static final String CLIENT_SECRET = "";
-	    public static final String SCOPE = "";
-	    public static final String RESOURCE_URL_TPL =   "https://login.microsoftonline.com/e44593f3-8e64-45a9-983a-37ed656a0a2a/oauth2/v2.0/token";
+	    // Configuración cargada desde application.properties mediante ConfigProperties
 
 	    
     
@@ -41,13 +31,13 @@ public class actualiza_cursos {
        }
 
     private static JSONArray obtenerFormaciones(int entidadCod, int planCod) throws Exception {
-        // 1) Obtenci�n de token
+        // 1) Obtención de token
     	   OAuthClient client2 = new OAuthClient(new URLConnectionClient());
 
            OAuthClientRequest request2 =
-                   OAuthClientRequest.tokenLocation(TOKEN_REQUEST_URL)
+                   OAuthClientRequest.tokenLocation(ConfigProperties.getOauthTokenRequestUrl())
                    .setGrantType(GrantType.CLIENT_CREDENTIALS)                    
-                   .setScope(SCOPE)                    
+                   .setScope(ConfigProperties.getOauthScope())                    
                    .buildBodyMessage();
           
            request2.addHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -124,7 +114,11 @@ public class actualiza_cursos {
         return todasFormaciones;
     }
     private static void guardarEnBD(JSONArray formaciones) throws SQLException {
-        Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD); 
+        Connection conn = DriverManager.getConnection(
+            ConfigProperties.getDbCursosUrl(), 
+            ConfigProperties.getDbCursosUser(), 
+            ConfigProperties.getDbCursosPassword()
+        ); 
         String sql = "{ call ACTUALIZA_CURSOS(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) }";  PreparedStatement pstmt = conn.prepareStatement(sql);
 
             for (int i = 0; i < formaciones.length(); i++) {
