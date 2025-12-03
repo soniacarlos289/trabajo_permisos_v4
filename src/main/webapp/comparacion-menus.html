@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparación: Menú Antiguo vs Menú Lateral Moderno</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #1e5da8, #3498db);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .header h1 {
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .comparison-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .menu-section {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .menu-header {
+            padding: 20px;
+            font-weight: bold;
+            font-size: 1.3em;
+            text-align: center;
+        }
+
+        .old-menu .menu-header {
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+        }
+
+        .new-menu .menu-header {
+            background: linear-gradient(135deg, #27ae60, #229954);
+            color: white;
+        }
+
+        .menu-content {
+            padding: 20px;
+        }
+
+        /* Old Menu Styles */
+        .old-tabh {
+            list-style: none;
+            display: flex;
+            background: linear-gradient(135deg, #1e5da8, #3498db);
+            flex-wrap: wrap;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .old-tabh li {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .old-tabh li a {
+            display: block;
+            padding: 12px 20px;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .old-tabh li:last-child a {
+            border-right: none;
+        }
+
+        .old-tabh li.active a {
+            background-color: white;
+            color: #1e5da8;
+        }
+
+        .old-subtabh {
+            list-style: none;
+            display: flex;
+            background-color: #e3f2fd;
+            flex-wrap: wrap;
+            border-bottom: 2px solid #dee2e6;
+            margin-top: 10px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .old-subtabh li {
+            flex: 0 1 auto;
+        }
+
+        .old-subtabh li a {
+            display: block;
+            padding: 10px 15px;
+            color: #1e5da8;
+            text-decoration: none;
+            border-right: 1px solid #dee2e6;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .old-subtabh li:last-child a {
+            border-right: none;
+        }
+
+        .old-subtabh li.active a {
+            background-color: #3498db;
+            color: white;
+        }
+
+        /* New Sidebar Menu Styles */
+        .sidebar-demo {
+            width: 100%;
+            background: linear-gradient(180deg, #1e5da8, #0d47a1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .sidebar-header {
+            padding: 15px;
+            background-color: rgba(0, 0, 0, 0.2);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        .sidebar-menu-list {
+            list-style: none;
+        }
+
+        .sidebar-menu-item {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .sidebar-menu-link {
+            display: block;
+            padding: 12px 15px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .sidebar-menu-link:hover,
+        .sidebar-menu-item.active .sidebar-menu-link {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-left-color: #3498db;
+            padding-left: 20px;
+        }
+
+        .sidebar-submenu {
+            list-style: none;
+            background-color: rgba(0, 0, 0, 0.2);
+            display: none;
+        }
+
+        .sidebar-menu-item.active .sidebar-submenu {
+            display: block;
+        }
+
+        .sidebar-submenu-link {
+            display: block;
+            padding: 8px 15px 8px 35px;
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: all 0.2s ease;
+        }
+
+        .sidebar-submenu-link:hover,
+        .sidebar-submenu-link.active {
+            background-color: #3498db;
+            color: white;
+            padding-left: 40px;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .feature-card h3 {
+            color: #1e5da8;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .feature-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .feature-card li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .feature-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        .feature-card.old li:before {
+            content: "✗";
+            color: #e74c3c;
+        }
+
+        @media (max-width: 768px) {
+            .comparison-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .icon {
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📊 Comparación de Menús de Navegación</h1>
+        <p>Sistema RRHH - Menú Antiguo vs Menú Lateral Moderno</p>
+    </div>
+
+    <div class="comparison-container">
+        <!-- Old Menu -->
+        <div class="menu-section old-menu">
+            <div class="menu-header">
+                ❌ Menú Anterior (Pestañas Horizontales)
+            </div>
+            <div class="menu-content">
+                <h3 style="color: #e74c3c; margin-bottom: 15px;">Menú Principal</h3>
+                <ul class="old-tabh">
+                    <li class="active"><a href="#">Permisos/Ausencias</a></li>
+                    <li><a href="#">Autorizar</a></li>
+                    <li><a href="#">Finger</a></li>
+                    <li><a href="#">Horas Sindicales</a></li>
+                    <li><a href="#">Proceso Bolsa</a></li>
+                    <li><a href="#">Calendario</a></li>
+                    <li><a href="#">Bajas</a></li>
+                    <li><a href="#">Informes</a></li>
+                </ul>
+
+                <h3 style="color: #e74c3c; margin: 20px 0 15px;">Submenú</h3>
+                <ul class="old-subtabh">
+                    <li><a href="#">Datos per.</a></li>
+                    <li><a href="#">Permisos</a></li>
+                    <li class="active"><a href="#">Ausencias</a></li>
+                    <li><a href="#">Horas</a></li>
+                    <li><a href="#">Firmas</a></li>
+                    <li><a href="#">Fichajes</a></li>
+                    <li><a href="#">Bolsa</a></li>
+                </ul>
+
+                <div style="margin-top: 20px; padding: 15px; background-color: #fff3cd; border-left: 4px solid #ffc107; border-radius: 4px;">
+                    <strong>⚠️ Problemas:</strong>
+                    <ul style="margin-top: 10px; padding-left: 20px;">
+                        <li>Ocupa mucho espacio vertical</li>
+                        <li>Limitado por el ancho de pantalla</li>
+                        <li>Difícil de usar en móviles</li>
+                        <li>Navegación plana sin jerarquía</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- New Sidebar Menu -->
+        <div class="menu-section new-menu">
+            <div class="menu-header">
+                ✅ Menú Nuevo (Lateral Moderno)
+            </div>
+            <div class="menu-content">
+                <div class="sidebar-demo">
+                    <div class="sidebar-header">
+                        🏢 RRHH Sistema
+                    </div>
+                    <ul class="sidebar-menu-list">
+                        <li class="sidebar-menu-item">
+                            <a href="#" class="sidebar-menu-link"><span class="icon">🏠</span>Inicio / Buscar</a>
+                        </li>
+                        <li class="sidebar-menu-item active">
+                            <a href="#" class="sidebar-menu-link"><span class="icon">👤</span>Funcionario</a>
+                            <ul class="sidebar-submenu">
+                                <li><a href="#" class="sidebar-submenu-link">Datos Personales</a></li>
+                                <li><a href="#" class="sidebar-submenu-link">Permisos</a></li>
+                                <li><a href="#" class="sidebar-submenu-link active">Ausencias</a></li>
+                                <li><a href="#" class="sidebar-submenu-link">Fichajes</a></li>
+                                <li><a href="#" class="sidebar-submenu-link">Firmas</a></li>
+                                <li><a href="#" class="sidebar-submenu-link">Horas Extras</a></li>
+                                <li><a href="#" class="sidebar-submenu-link">Bolsa</a></li>
+                            </ul>
+                        </li>
+                        <li class="sidebar-menu-item">
+                            <a href="#" class="sidebar-menu-link"><span class="icon">✔️</span>Autorizar</a>
+                        </li>
+                        <li class="sidebar-menu-item">
+                            <a href="#" class="sidebar-menu-link"><span class="icon">🕐</span>Aplicación Finger</a>
+                        </li>
+                        <li class="sidebar-menu-item">
+                            <a href="#" class="sidebar-menu-link"><span class="icon">📅</span>Horas Sindicales</a>
+                        </li>
+                        <li class="sidebar-menu-item">
+                            <a href="#" class="sidebar-menu-link"><span class="icon">📊</span>Proceso Bolsa</a>
+                        </li>
+                        <li class="sidebar-menu-item">
+                            <a href="#" class="sidebar-menu-link"><span class="icon">📋</span>Informes</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div style="margin-top: 20px; padding: 15px; background-color: #d4edda; border-left: 4px solid #28a745; border-radius: 4px;">
+                    <strong>✅ Ventajas:</strong>
+                    <ul style="margin-top: 10px; padding-left: 20px;">
+                        <li>Más espacio para contenido</li>
+                        <li>Navegación jerárquica clara</li>
+                        <li>Optimizado para móviles</li>
+                        <li>Resaltado dinámico automático</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="features-grid">
+        <div class="feature-card old">
+            <h3>❌ Menú Anterior</h3>
+            <ul>
+                <li>Ocupa espacio horizontal valioso</li>
+                <li>Limitado número de opciones visibles</li>
+                <li>Navegación plana sin jerarquía</li>
+                <li>Difícil de usar en pantallas pequeñas</li>
+                <li>HTML repetido en cada página</li>
+                <li>Estilo menos moderno</li>
+            </ul>
+        </div>
+
+        <div class="feature-card">
+            <h3>✅ Menú Lateral Moderno</h3>
+            <ul>
+                <li>Máximo espacio para contenido principal</li>
+                <li>Número ilimitado de opciones</li>
+                <li>Navegación jerárquica con submenús</li>
+                <li>Totalmente responsive (móvil/tablet/desktop)</li>
+                <li>Un solo archivo centralizado (menu.jsp)</li>
+                <li>Diseño moderno y profesional</li>
+            </ul>
+        </div>
+
+        <div class="feature-card">
+            <h3>🎨 Características de Diseño</h3>
+            <ul>
+                <li>Esquema de colores azul y blanco</li>
+                <li>Iconos visuales para cada sección</li>
+                <li>Animaciones suaves y transiciones</li>
+                <li>Efectos hover intuitivos</li>
+                <li>Resaltado automático de página activa</li>
+                <li>Compatible con Bootstrap 5</li>
+            </ul>
+        </div>
+
+        <div class="feature-card">
+            <h3>📱 Responsive Design</h3>
+            <ul>
+                <li>Botón de menú en móviles</li>
+                <li>Menú deslizable desde la izquierda</li>
+                <li>Cierre automático al hacer clic fuera</li>
+                <li>Adaptable a cualquier tamaño de pantalla</li>
+                <li>Touch-friendly para dispositivos táctiles</li>
+                <li>Optimizado para tablets</li>
+            </ul>
+        </div>
+
+        <div class="feature-card">
+            <h3>🔧 Mantenibilidad</h3>
+            <ul>
+                <li>Un solo archivo de menú (menu.jsp)</li>
+                <li>Fácil agregar nuevas opciones</li>
+                <li>Estilos centralizados en CSS</li>
+                <li>Cambios reflejados en todas las páginas</li>
+                <li>Código limpio y bien documentado</li>
+                <li>Fácil personalización de colores</li>
+            </ul>
+        </div>
+
+        <div class="feature-card">
+            <h3>🚀 Integración</h3>
+            <ul>
+                <li>Simple incluir con <%@ include %></li>
+                <li>Compatible con páginas existentes</li>
+                <li>No requiere cambios en JavaScript</li>
+                <li>Funciona con Bootstrap 5</li>
+                <li>Integrado con custom-style.css</li>
+                <li>Documentación completa incluida</li>
+            </ul>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin: 50px 0; padding: 30px; background: white; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+        <h2 style="color: #1e5da8; margin-bottom: 20px;">📚 Documentación Completa</h2>
+        <p style="font-size: 1.1em; margin-bottom: 15px;">Para más información sobre cómo usar el nuevo menú, consulta:</p>
+        <ul style="list-style: none; padding: 0;">
+            <li style="padding: 8px 0; font-weight: 500;">📄 <code>MENU_LATERAL_IMPLEMENTATION.md</code> - Guía de implementación completa</li>
+            <li style="padding: 8px 0; font-weight: 500;">🔗 <code>/jsp/demo-menu-lateral.jsp</code> - Demostración interactiva</li>
+            <li style="padding: 8px 0; font-weight: 500;">📝 <code>/jsp/menu.jsp</code> - Archivo del menú principal</li>
+        </ul>
+    </div>
+
+</body>
+</html>
